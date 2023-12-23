@@ -15,16 +15,20 @@ public class UserService {
 	
 	public static void main(String[] args) {
 		
+		String[] information;
 		
-		String line = "";
 		
 			try {
 				BufferedReader br = new BufferedReader(new FileReader("data.txt"));
+				String line = "";
 				while((line = br.readLine()) != null){
-					String[] userStuff = line.split(",");
-					System.out.println(userStuff);
-					for(String userInfo : userStuff);
-					System.out.println(userInfo);
+					information = line.split(",");
+					String username = information[0];
+					String password = information[1];
+					String name =information[2];
+					System.out.println(username);
+					System.out.println(password);
+					System.out.println(name);
 					
 					
 				}
@@ -36,8 +40,6 @@ public class UserService {
 				
 				e.printStackTrace();
 			}
-		//put back what you had before in run configurations
-			//split each line into an array
 		
 		
 		
@@ -58,40 +60,7 @@ public class UserService {
 		
 		
 		
-		//try {
-//			BufferedReader fileReader = null;
-//			 fileReader = new BufferedReader(new FileReader("data.txt"));
-//			
-//			
-//			 while((line = fileReader.readLine())  != null) {
-//				 String[] userInfo = line.split(",");
-//			 System.out.println(userInfo);
-//			 }
-//			 
-//		} catch (FileNotFoundException e) {
-//			System.out.println("Oops there was an exception");
-//			
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}finally {
-//			try {
-//				
-//				System.out.println("Closing file reader");
-//				fileReader.close();
-//			}catch (IOException e) {
-//				e.printStackTrace();
-//		}
-//		}
-////		for (String arg : args) {
-//////			System.out.println(arg);
-////			String []userArray = arg.split(",");
-////			for (String userInfo : userArray) {
-////				System.out.println(userInfo);
-////			}
-//		}
-//		
-//				
+		
+	
 	}
 }
