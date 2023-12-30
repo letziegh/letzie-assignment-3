@@ -13,51 +13,42 @@ public class UserService {
 	//3. Creating the User Array.
 	//READ THE FILE AND VALIDATE USER INPUT
 	
+	
+	public UserPOJO createUser (String username, String password, String name) {
+		UserPOJO user = new UserPOJO();
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setName(name);
+		return user;
+	
+	
+	}
+	
+	
+	
 	public static void main(String[] args) {
 		
 		String[] information;
 		
 		
-			try {
-				BufferedReader br = new BufferedReader(new FileReader("data.txt"));
+			try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {
 				String line = "";
 				while((line = br.readLine()) != null){
-					information = line.split(",");
+					information = line.split(",");  
 					String username = information[0];
 					String password = information[1];
 					String name =information[2];
-					System.out.println(username);
-					System.out.println(password);
-					System.out.println(name);
-					
-					
+//					System.out.println(username);
+//					System.out.println(password);
+//					System.out.println(name);
+										
 				}
 				
 			} catch (FileNotFoundException e) {
-				
 				e.printStackTrace();
 			}catch (IOException e) {
-				
 				e.printStackTrace();
 			}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		

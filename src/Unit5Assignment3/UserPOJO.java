@@ -1,8 +1,8 @@
 package Unit5Assignment3;
 
 public class UserPOJO {
-	private String username;
-	private String password;
+	private String  username ;
+	private String  password;
 	private String name;
 	//You should create a User POJO that will store the information that will be read from the file.
 	
