@@ -16,61 +16,44 @@ public class UserService {
 	// 3. Creating the User Array.
 	// READ THE FILE AND VALIDATE USER INPUT
 
-	public void validateUser(UserPOJO[] user, String username, String password) {
-	for (int i = 0; i < user.length; i++) {
-		UserPOJO currentUser = user[i];
+	public UserPOJO validateUser(UserPOJO[] user, String username, String password) {
+//change from void to return something
 		
-		if (currentUser.getUsername().equalsIgnoreCase(username) && currentUser.getPassword().equals(password)) {
-			System.out.println("Welcome: " + currentUser.getName());
-			break;
-		}else if(!currentUser.getUsername().equalsIgnoreCase(username) || (!currentUser.getPassword().equals(password))){
-			System.out.println("Invalid login, please try again.");
-			continue;
-					
-		}else {
-			System.out.println("Too many failed login attempts, you are now locked out.");
-		}return;
-				
-	}
 
-//			for (int i = 0; i < user.length; i++) {
-//			UserPOJO currentUser = user[i];
-//			
-//			if (currentUser.getUsername().equalsIgnoreCase(username) && currentUser.getPassword().equals(password)) {
-//				System.out.println("Welcome: " + currentUser.getName());
-//				break;
-//			}else if(!currentUser.getUsername().equalsIgnoreCase(username) || (!currentUser.getPassword().equals(password))){
-//				System.out.println("Invalid login, please try again.");
-//				continue;
-//						
-//			}scanner.close();
-	//			else {
-//				System.out.println("Too many failed login attempts, you are now locked out.");
-//			}
+		for (int i = 0; i < user.length; i++) {
+			UserPOJO currentUser = user[i];
+
+			if (currentUser.getUsername().equalsIgnoreCase(username) && currentUser.getPassword().equals(password)) {
+				System.out.println("Welcome: " + currentUser.getName());
+				return currentUser;
+			} 
+
 			
-		}
 		
-	
+			
+
+		} return null;
+		
+		
+	}
 
 	public UserPOJO createUser(String username, String password, String name) {
 		UserPOJO user = new UserPOJO();
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setName(name);
-	return user;
+		return user;
 
 	}
-	
-	
-	public UserPOJO [] InfoReader() {
-UserService userService = new UserService();
-UserPOJO[] users = new UserPOJO[4];
 
+	public UserPOJO[] InfoReader() {
+		UserService userService = new UserService();
+		UserPOJO[] users = new UserPOJO[4];
 
 //insert 4 different users into array
 // rewatch videos on arrays
 		String[] information;
-int i = 0;
+		int i = 0;
 		try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {
 			String line = "";
 			while ((line = br.readLine()) != null) {
@@ -78,23 +61,20 @@ int i = 0;
 				String username = information[0];
 				String password = information[1];
 				String name = information[2];
-				UserPOJO newuser  = userService.createUser(username, password, name);
-				//System.out.println(newuser);
-				users[i]= newuser; i++;
+				UserPOJO newuser = userService.createUser(username, password, name);
+				// System.out.println(newuser);
+				users[i] = newuser;
+				i++;
 			}
-System.out.println(Arrays.toString(users));
+			System.out.println(Arrays.toString(users));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-return users;
+		return users;
 	}
 }
-
-
-
-
 
 //public void validateUser(UserPOJO[] user, String username, String password) {
 //	for (int i = 0; i < user.length; i++) {
