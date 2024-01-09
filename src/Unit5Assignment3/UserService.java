@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Scanner;
+//import java.util.Arrays;
+//import java.util.Scanner;
 
 public class UserService {
 //this class will read the data.txt file
@@ -17,19 +17,18 @@ public class UserService {
 	// READ THE FILE AND VALIDATE USER INPUT
 
 	public UserPOJO validateUser(UserPOJO[] user, String username, String password) {
-//change from void to return something
+//change from void to UserPOJO return something
 		
 
 		for (int i = 0; i < user.length; i++) {
 			UserPOJO currentUser = user[i];
 
 			if (currentUser.getUsername().equalsIgnoreCase(username) && currentUser.getPassword().equals(password)) {
-				System.out.println("Welcome: " + currentUser.getName());
+				System.out.println("Welcome:" + currentUser.getName());
 				return currentUser;
-			} 
-
+			}
 			
-		
+
 			
 
 		} return null;
@@ -66,7 +65,7 @@ public class UserService {
 				users[i] = newuser;
 				i++;
 			}
-			System.out.println(Arrays.toString(users));
+		//	System.out.println(Arrays.toString(users));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
