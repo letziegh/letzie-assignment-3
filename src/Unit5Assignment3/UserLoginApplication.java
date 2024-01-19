@@ -15,7 +15,6 @@ public class UserLoginApplication {
 		System.out.println("Enter your password: ");
 		String password = scanner.nextLine();
 
-		
 		UserPOJO validatedUser = userService.validateUser(users, userInput, password);
 
 		int attempt = 0;
@@ -36,21 +35,22 @@ public class UserLoginApplication {
 				System.out.println("Enter your password: ");
 				password = scanner.nextLine();
 
-			} else
+			} else {
 				break;
+			}
+			attempt++;
+			validatedUser = userService.validateUser(users, userInput, password);
 
 		}
-		attempt++;
 
-		if (attempt== 4 && validatedUser == null) {
+		if (attempt == 4 && validatedUser == null) {
 			System.out.println("Too many failed login attempts, you are now locked out.");
 		}
-
 		scanner.close();
-
-	
 	}
+
 }
+
 //
 //	public static void main(String[] args) {
 
